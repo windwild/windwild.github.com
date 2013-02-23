@@ -124,6 +124,4 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
 
-
-default_asides: [asides/recent_posts.html, asides/github.html, custom/asides/weibo.html]
-
+auto: true
