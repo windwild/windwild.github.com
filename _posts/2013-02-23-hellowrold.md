@@ -6,3 +6,10 @@ category:
 tags: [github]
 ---
 {% include JB/setup %}
+
+今天起，开始在这里写日志吧。
+
+Markdown用起来真方便。
+
+不讲废话了。
+
