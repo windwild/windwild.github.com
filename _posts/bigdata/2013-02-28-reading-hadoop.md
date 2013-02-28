@@ -6,6 +6,7 @@ category: Data
 tags: [BigData,MapReduce,Hadoop]
 ---
 {% include JB/setup %}
+
 ## 读书笔记 Hadoop: The Definitive Guide
 
 ### 第一章 Meet Hadoop
@@ -42,15 +43,15 @@ tags: [BigData,MapReduce,Hadoop]
 ![Hadoop data Flow](http://autofei.files.wordpress.com/2010/06/2-3.png)
 这个图很好的诠释了Hadoop中Mapreduce部分的Data FLow。
 
-先介绍了一些术语。在MR中，Job是最大的单元，包含输入数据、MR程序和配置信息。Hadoop将Job分成不同的tasks然后执行。所以就有了两种nodes，一种是jobtracker，另一种是tasktracker。
+先介绍了一些术语。在MR中，Job是最大的单元，包含输入数据、MR程序和配置信息。Hadoop将Job分成不同的`tasks`然后执行。所以就有了两种nodes，一种是`jobtracker`，另一种是`tasktracker`。
 
-关于input数据的划分，建议大小是64M，因为64M是HDFS一个block的大小。过多的划分会造成overhead（就是执行工作的时间少，执行调度的时间长），过少的划分会造成负载不均衡现象。有强调了一下Hadoop强大的data locality optimization策略。尽量减少网络通讯，以节约贷款并提升处理速度。如果不能在本地调动数据，也一定要争取在一个rake（机架）内调动数据。
+关于input数据的划分，建议大小是64M，因为64M是HDFS一个block的大小。过多的划分会造成overhead（就是执行工作的时间少，执行调度的时间长），过少的划分会造成负载不均衡现象。有强调了一下Hadoop强大的 __data locality optimization__ 策略。尽量减少网络通讯，以节约贷款并提升处理速度。如果不能在本地调动数据，也一定要争取在一个rake（机架）内调动数据。
 
-回到上边的那个图，Map nodes从HDFS中读取数据，然后将处理过的数据保存在本地（因为是临时数据，没必要大费周折）。再将数据传输到制定的Reduce node上（关于Reduce node的选择可以采用Hash（key）的方法，同一个key尽量在一个node上处理，一个node上可以处理多个key）。当数据到达reduce node的时候通常需要做一个merge操作，可以是将数据排序或者分类。reduce节点处理过数据后将数据存在HDFS上。
+回到上边的那个图，Map nodes从 HDFS 中读取数据，然后将处理过的数据保存在本地（因为是临时数据，没必要大费周折）。再将数据传输到制定的Reduce node上（关于Reduce node的选择可以采用Hash（key）的方法，同一个key尽量在一个node上处理，一个node上可以处理多个key）。当数据到达reduce node的时候通常需要做一个merge操作，可以是将数据排序或者分类。reduce节点处理过数据后将数据存在HDFS上。
 
-再然后介绍了一下Combiner Functions，这个Combiner Functions在Map结束后执行，是对Map产生的数据进行的优化。最给力的是，你还可以省掉Reduce Function，通过Combiner Functions直接得到结果。（这样的结构不科学啊）
+再然后介绍了一下__Combiner Functions__，这个Combiner Functions在Map结束后执行，是对Map产生的数据进行的优化。最给力的是，你还可以省掉Reduce Function，通过Combiner Functions直接得到结果。（这样的结构不科学啊）
 
 #### Hadoop Streaming(也就是说可以和多语言通用)
-看到这部分的时候真是心潮澎湃了啊！stdin，stdout真是太可爱了。因为本人不喜欢Java，没有为什么，就是不喜欢。这一部分就是说可以通过stdin和stdout与多种语言通用Hadoop框架。比如Ruby，Python甚至C++（学名Hadoop Piples）。
+看到这部分的时候真是心潮澎湃了啊！`stdin`，`stdout`真是太可爱了。因为本人不喜欢Java，没有为什么，就是不喜欢。这一部分就是说可以通过`stdin`和`stdout`与多种语言通用Hadoop框架。比如Ruby，__Python__甚至C++（学名Hadoop Piples）。
 
 
