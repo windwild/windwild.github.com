@@ -28,3 +28,13 @@ tags: [BigData,MapReduce,Hadoop]
 * HBase - 分布式Column-Oriented数据库，采用HDFS存储数据，支持Match-Style计算和点查询（SQL like？）
 * ZooKeeyper - 分布式，高可靠的Coordination Service。提供了Primitives，比如分布式锁机制。
 * Sqoop - 从关系数据库迁移数据到HDFS的工具。
+
+### 第二章 Meet Hadoop
+#### Map Reduce Example
+
+在这一章里，首先介绍了一个使用MapReduce的例子，根据传感器信息分析每年的最高气温。还介绍了一下Hadoop MapReduce的新老API和区别，当然新的更好用一些。
+
+#### Scaling Out
+##### Data Flow
+
+
