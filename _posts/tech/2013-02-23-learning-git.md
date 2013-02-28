@@ -14,5 +14,5 @@ git reset HEAD
 
 * git 修改文件名
 
-git mv <filename>
+git mv \<filename\>
 
