@@ -12,4 +12,7 @@ Git学艺不精，找个地方记录下遇到的问题和解决办法：
 
 git reset HEAD
 
-* other issues
+* git 修改文件名
+
+git mv <filename>
+
