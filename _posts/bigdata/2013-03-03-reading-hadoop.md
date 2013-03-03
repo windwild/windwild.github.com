@@ -54,4 +54,22 @@ tags: [BigData,MapReduce,Hadoop]
 #### Hadoop Streaming(也就是说可以和多语言通用)
 看到这部分的时候真是心潮澎湃了啊！`stdin`，`stdout`真是太可爱了。因为本人不喜欢Java，没有为什么，就是不喜欢。这一部分就是说可以通过`stdin`和`stdout`与多种语言通用Hadoop框架。比如Ruby，__Python__甚至C++（学名Hadoop Piples）。
 
+### 第三章 HDFS
+HDFS全称是Hadoop Distributed Filesystem，为满足Hadoop对文件系统要求设计而成的文件系统。功能类似于Google的GFS。
+
+__优点__：
+HDFS适合存储__大文件__，这和淘宝的TFS形成了比较大的对比，因为需求不一样，这两个东西其实不能相提并论。HDFS同时支持以__数据流__的形式读取，数据__写一次读多次__。当然，HDFS并不需要昂贵的硬件，就可以实现高可靠性。
+
+__缺点__：
+HDFS当然也有很多缺点，首先__不适合低延迟数据访问__，如果想获得低延迟的数据访问可以参考`HBase`。HDFS__不适合存储大量小文件__，因为HDFS存在namenode负责管理文件列表。HDFS同样__不适用于多用户同时写入修改__。
+
+HDFS中存在两种节点，`name node`和`datanode`。`name node`管理HDFS中的文件，管理`filesystem tree`和`metadata`。这些信息以两种形式永久的存储在本地，分别是`namespace image`和`edit log`。这样的话，如果`name node`挂了，整个HDFS也就挂了，因为只有`name node`知道哪个文件的哪个块儿在哪儿。为此Hadoop提供了两种防错机制。首先是备份，`name node`原子的同步数据到其他位置，比如NFS。另一种策略是`secondary namenode`。具体疗效还没大看懂。书上讲是合并`namespace image`和`edit log`以防`edit log`过大
+
+HDFS可以通过增加`name node`来进行扩展。应该叫HDFS Federation。
+
+当HDFS的name node挂掉的时候可以迅速的切换name node。新节点可用必须满足：加载namespace image到内存，重做edit log，从datanodes收到足够的块报告。
+
+再然后就是怎么用Java什么的调用HDFS了。不细说了，看书上的sample就好，很容易。
+
+未完
 
