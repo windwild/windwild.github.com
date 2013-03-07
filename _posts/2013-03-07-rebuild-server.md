@@ -1,0 +1,86 @@
+---
+layout: post
+title: "rebuild server"
+description: ""
+category: 
+tags: []
+---
+{% include JB/setup %}
+
+# 重启windwild.net
+
+windwild.net的服务器已经常年没收拾，今天重新弄一下，希望顺利。以下为记录。
+
+去linode删除掉所有的分区，重装的debian6。
+
+遇到的第一个错误
+	
+	➜  ~  ssh root@windwild.net
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+	Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+	It is also possible that a host key has just been changed.
+	The fingerprint for the RSA key sent by the remote host is
+	01:6a:a0:e7:aa:49:c1:6d:f5:93:48:51:a2:18:48:12.
+	Please contact your system administrator.
+	Add correct host key in /Users/windwild/.ssh/known_hosts to get rid of this message.
+	Offending RSA key in /Users/windwild/.ssh/known_hosts:2
+	RSA host key for windwild.net has changed and you have requested strict checking.
+	Host key verification failed.
+
+去`/Users/windwild/.ssh/known_hosts`删掉老的windwild.net的public key
+
+然后，我好懒，直接用LNMP自动配置了。。。<http://lnmp.org/install.html>
+
+这是一段不用输入FTP用户名密码就能安装插件的代码 插入到wp-config.php中
+
+	/** Override default file permissions */
+	if( is_admin() ) {
+	  add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
+	  define( 'FS_CHMOD_DIR', 0751 );
+	}
+
+
+然后因为改用Nginx，所以配置rewrite有些不一样，贴一个配置文件
+
+	log_format  blog.windwild.net  '$remote_addr - $remote_user [$time_local] "$request" '
+	             '$status $body_bytes_sent "$http_referer" '
+	             '"$http_user_agent" $http_x_forwarded_for';
+	 server
+	 	{
+	 		listen       80;
+	 		server_name www.windwild.net;
+	 		rewrite ^(.*) http://blog.windwild.net$1 permanent;
+	 	}
+	
+	server
+		{
+			listen       80;
+			server_name blog.windwild.net;
+			index index.html index.htm index.php default.html default.htm default.php;
+			root  /home/wwwroot/blog.windwild.net;
+			include wordpress.conf;
+			location ~ .*\.(php|php5)?$
+				{
+					try_files $uri =404;
+					fastcgi_pass  unix:/tmp/php-cgi.sock;
+					fastcgi_index index.php;
+					include fcgi.conf;
+				}
+	
+			location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+				{
+					expires      30d;
+				}
+	
+			location ~ .*\.(js|css)?$
+				{
+					expires      12h;
+				}
+	
+			access_log  /home/wwwlogs/blog.windwild.net.log  blog.windwild.net;
+		}
+		
+然后markdown插件，什么的 装上就好了。
