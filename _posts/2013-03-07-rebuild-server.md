@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "rebuild server"
+title: "重建Linode服务器"
 description: ""
 category: 
 tags: []
