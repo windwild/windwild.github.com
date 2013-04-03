@@ -112,7 +112,7 @@ JB :
   #
   sharing :
     provider : false
-    
+  default_asides: [asides/weibo.html]
   # Settings for all other include helpers can be defined by creating 
   # a hash with key named for the given helper. ex:
   #
