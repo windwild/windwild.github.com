@@ -2,7 +2,7 @@
 layout: post
 title: "fuzzywuzzy"
 description: ""
-category: 
+category: Python
 tags: []
 ---
 {% include JB/setup %}
