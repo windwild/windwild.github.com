@@ -2,8 +2,8 @@
 layout: post
 title: "python call python"
 description: ""
-category: 
-tags: []
+category: Python
+tags: [python, socket, stdout]
 ---
 {% include JB/setup %}
 

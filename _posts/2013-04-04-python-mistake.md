@@ -3,7 +3,7 @@ layout: post
 title: "千万不要把python文件名用的和正在调用的包一样"
 description: ""
 category: Python
-tags: []
+tags: [Python]
 ---
 {% include JB/setup %}
 清理掉一批作业以后，终于可以继续折腾Python了，可以早上一小段简单的代码就卡住了。。。

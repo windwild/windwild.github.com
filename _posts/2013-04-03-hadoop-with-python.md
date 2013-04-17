@@ -2,8 +2,8 @@
 layout: post
 title: "Hadoop with Python"
 description: ""
-category: Python
-tags: []
+category: Hadoop
+tags: [Python, Hadoop]
 ---
 {% include JB/setup %}
 

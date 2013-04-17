@@ -2,8 +2,8 @@
 layout: post
 title: "Matlab Image Processing"
 description: ""
-category: 
-tags: []
+category: Image Processing
+tags: [Image Processing]
 ---
 {% include JB/setup %}
 

@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "NMF Hadoop"
-description: ""
-category: 
-tags: []
+description: "Using Hadoop for NMF"
+category: Data Mining
+tags: [Data Mining, Python, Hadoop]
 ---
 {% include JB/setup %}
 标题是骗人的，我并不知道怎么做，非负矩阵分解如何才能分布式的解决呢？

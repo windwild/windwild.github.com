@@ -3,7 +3,7 @@ layout: post
 title: "根据Google搜索结果计算关键字相关度"
 description: ""
 category: Python
-tags: []
+tags: [Algorithm, Python, Google]
 ---
 {% include JB/setup %}
 Python练习小程序。项目可能需要这么一个东西，贡献一个。

@@ -2,8 +2,8 @@
 layout: post
 title: "二分查找"
 description: ""
-category: 
-tags: []
+category: Basic
+tags: [Basic]
 ---
 {% include JB/setup %}
 二分查找比较完美的代码，像`middle = left + （right － left) / 2;`真的是细节决定成败了。

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Advanced Python Constructs(译)"
-category: python
-tags: [python， scipy-lecture-notes]
+title: "Advanced Python Constructs"
+category: Python
+tags: [Python]
 disqus: true
 ---
 {% include JB/setup %}
@@ -12,7 +12,6 @@ disqus: true
 
 翻译自[http://scipy-lectures.github.com/advanced/advanced\_python/index.html](http://scipy-lectures.github.com/advanced/advanced_python/index.html)
 作者:	Zbigniew Jędrzejewski-Szmek
-转自：[http://reverland.org/python/2013/03/13/advanced-python-constructs/](http://reverland.org/python/2013/03/13/advanced-python-constructs/) 真的觉得这篇文章太好了。
 
 这章有关Python中被认为高级的特性——就是说并不是每个语言都有的，也是说它们可能在更复杂的程序或库中更有用，但不是说特别特殊或特别复杂。
 

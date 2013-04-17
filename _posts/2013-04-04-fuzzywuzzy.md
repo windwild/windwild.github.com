@@ -3,7 +3,7 @@ layout: post
 title: "fuzzywuzzy"
 description: ""
 category: Python
-tags: []
+tags: [fuzzywuzzy]
 ---
 {% include JB/setup %}
 Fuzzywuzzy 单从名字上来看就觉得好可爱呀！然后Google的时候发现这是一句绕口令。
