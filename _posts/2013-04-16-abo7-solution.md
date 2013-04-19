@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-vul,c
+vul.c
 ---
 
 	char buf[256]={1};
