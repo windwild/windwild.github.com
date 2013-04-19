@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NMF Hadoop"
+title: "Twitter Themes"
 description: "Using Hadoop for NMF"
 category: Data Mining
 tags: [Data Mining, Python, Hadoop]
