@@ -3,7 +3,7 @@ layout: post
 title: "GraphLab 协同过滤工具包介绍"
 description: ""
 category: MPI
-tags: [MPI]
+tags: [GraphLab,协同过滤,MPI]
 ---
 {% include JB/setup %}
 
