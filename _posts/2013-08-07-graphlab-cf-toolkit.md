@@ -38,28 +38,50 @@ tags: [MPI]
 ## 算法
 ### ALS
 优点：简单易用，不需要配置太多参数就能跑。
+
 缺点：准确度一般，计算开销较大！
 
 ### SGD
 优点：速度快！
+
 缺点：需要调整步长参数，相比`ALS`需要更多的迭代次数。
 
 ### BIAS-SGD
 优点：速度快！
+
 缺点：需要调整步长参数。
 
 ### SVD++
 优点：在参数合适的情况下比SGD跟家准确，而且相对来讲速度挺快的。
+
 缺点：有太多太多的参数需要调整了！
 
 ### Weighted-ALS
 优点：简单易用，特别之处在于可以对打分设定置信度！
+
 缺点：准确度一般，计算开销较大！
 
 ### Sparse-ALS
 优点：不大清楚
+
 缺点：不大清楚
 
 ### SVD
 优点：速度快
+
 缺点：准确度低
+
+## 单机运行脚本样例
+
+	#!/bin/bash
+	graphlab/release/toolkits/collaborative_filtering/biassgd \
+	        ~/dataset/smallnetflix/
+	        --predictions ~/output/windwild_output \
+	        --max_iter 500 \
+	        --minval 0.5 \
+	        --D 20 \
+	        --step_dec 0.9 \
+	        --lambda 0.005 \
+	        --gamma 0.02
+
+	sort ~/output/windwild_output_1_of_1
